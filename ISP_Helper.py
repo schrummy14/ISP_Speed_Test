@@ -17,12 +17,19 @@ def parse_msg(msg):
 
 def get_vals(msg):
     rhs = msg.split('=')
-    nums = rhs[1].split('/')
-    min_num = float(nums[0])
-    ave_num = float(nums[1])
-    max_num = float(nums[2])
-    std_num = nums[3].split(' ')
-    std_num = float(std_num[0])
+    try:
+        nums = rhs[1].split('/')
+        min_num = float(nums[0])
+        ave_num = float(nums[1])
+        max_num = float(nums[2])
+        std_num = nums[3].split(' ')
+        std_num = float(std_num[0])
+    except:
+        print("Could not Ping Website...")
+        min_num = float('nan')
+        ave_num = float('nan')
+        max_num = float('nan')
+        std_num = float('nan')
     return min_num, ave_num, max_num, std_num
 
 def get_date_and_time():
