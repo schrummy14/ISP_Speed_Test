@@ -43,7 +43,13 @@ host = [
     "www.reddit.com",
     "www.wikipedia.org",
     "www.paypal.com",
-    "www.salliemae.com"]
+    "www.salliemae.com",
+    "www.instagram.com",
+    "www.linkedin.com",
+    "www.imgur.com",
+    "www.wordpress.com",
+    "www.bing.com",
+    "www.twitch.tv"]
 
 
 def get_hosts():
