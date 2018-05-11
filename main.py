@@ -2,7 +2,11 @@
 import ISP_Helper as isp
 import Host_Names as hn
 import os
+import platform
 
+use_windows = 0
+if platform.system()=="Windows":
+    use_windows = 1
 host = hn.get_hosts()
 num_tries = 30
 
@@ -18,11 +22,13 @@ fid.write("Website,min_time,ave_time,max_time,std_time ms\n")
 for k in range(len(host)):
     out,error = isp.ping_address(host[k],num_tries)
     msg = isp.parse_msg(out)
-    min_val, ave_val, max_val, std_val = isp.get_vals(msg)
+    if use_windows == 0:
+        min_val, ave_val, max_val, std_val = isp.get_vals(msg)
+    else:
+        min_val, ave_val, max_val, std_val = isp.get_vals_windows(msg)
     line = (host[k] +','+ str(min_val) +','+ str(ave_val) +','
            + str(max_val) +','+ str(std_val) + '\n')
     fid.write(line)
     print line
-    
 fid.close()
 
