@@ -3,6 +3,14 @@ import datetime
 
 def ping_address(host,n):
     ping = subprocess.Popen(
+       ["ping","-c",str(n),host],
+       stdout = subprocess.PIPE,
+       stderr = subprocess.PIPE)
+    out,error = ping.communicate()
+    return out, error
+
+def ping_address_windows(host,n):
+    ping = subprocess.Popen(
        ["ping","-n",str(n),host], # Need -c for linux
        stdout = subprocess.PIPE,
        stderr = subprocess.PIPE)

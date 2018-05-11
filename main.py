@@ -20,7 +20,10 @@ fid.write(str(now)+'\n')
 fid.write("Website,min_time,ave_time,max_time,std_time ms\n")
 
 for k in range(len(host)):
-    out,error = isp.ping_address(host[k],num_tries)
+    if use_windows == 0:
+        out,error = isp.ping_address(host[k],num_tries)
+    else
+        out,error = isp.ping_address_windows(host[k],num_tries)
     msg = isp.parse_msg(out)
     if use_windows == 0:
         min_val, ave_val, max_val, std_val = isp.get_vals(msg)
