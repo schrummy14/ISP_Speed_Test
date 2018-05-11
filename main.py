@@ -22,7 +22,7 @@ fid.write("Website,min_time,ave_time,max_time,std_time ms\n")
 for k in range(len(host)):
     if use_windows == 0:
         out,error = isp.ping_address(host[k],num_tries)
-    else
+    else:
         out,error = isp.ping_address_windows(host[k],num_tries)
     msg = isp.parse_msg(out)
     if use_windows == 0:
